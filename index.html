@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link href="estilo.css" type="text/css" rel="stylesheet">
+    <title>Calculadora - Caso de Teste</title>
+</head>
+<body align="center"><br><br>
+    <h1><strong>CALCULADORA</strong> - Caso de Teste</h1><br>
+    Primeiro número<br>
+    <input id="n1" type="">
+    <br>
+    Segundo número<br>
+    <input id="n2" type=""><br><br>
+    <button onclick="calcular('+')">+</button>
+    <button onclick="calcular('-')">-</button>
+    <button onclick="calcular('/')">÷</button>
+    <button onclick="calcular('x')">x</button>
+    <br><br>
+    <strong>O resultado é <span id="resultado"></span></strong>
+
+    <script>
+        var n1 = document.querySelector('#n1')
+        var n2 = document.querySelector('#n2')
+        var resultadoHTML = document.querySelector('#resultado')
+
+        function mostrarResultado(resultado) {
+            if (isNaN(resultado)) {
+                resultadoHTML.innerHTML = "incalculável"
+                return
+            }
+            if (!isFinite(resultado)) {
+                resultadoHTML.innerHTML = "incalculável"
+                return
+            }
+            resultadoHTML.innerHTML = resultado
+        }
+        
+        function subtrair(){
+            let resultado = parseInt(n1.value) - parseInt(n2.value)
+            mostrarResultado(resultado)
+        }
+
+        function dividir(){
+            let resultado = parseInt(n1.value) / parseInt(n2.value)
+            mostrarResultado(resultado)
+        }
+
+        function multiplicar(){
+            let resultado = parseInt(n1.value) * parseInt(n2.value)
+            mostrarResultado(resultado)
+        }        
+
+        function calcular(operacao) {
+            let resultado
+            if (operacao == '+') {
+                resultado = parseInt(n1.value) + parseInt(n2.value)
+            } 
+            else if (operacao == '-') {
+                resultado = parseInt(n1.value) - parseInt(n2.value)
+            } 
+            else if (operacao == '/') {
+                resultado = parseInt(n1.value) / parseInt(n2.value)
+            } 
+            else if (operacao == 'x') {
+                resultado = parseInt(n1.value) * parseInt(n2.value)
+            }
+
+            mostrarResultado(resultado)
+        }
+
+        function caso1() {
+            let resultadoEsperado = 10
+            n1.value = 3
+            n2.value = 7
+            calcular('+')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+
+        function caso2() {
+            let resultadoEsperado = -2
+            n1.value = 4
+            n2.value = 6
+            calcular('-')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+
+        function caso3() {
+            let resultadoEsperado = 21
+            n1.value = 7
+            n2.value = 3
+            calcular('x')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+
+        function caso4() {
+            let resultadoEsperado = 2
+            n1.value = 10
+            n2.value = 5
+            calcular('/')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+
+        function caso5() {
+            let resultadoEsperado = 'incalculável'
+            n1.value = 2    
+            n2.value = 0
+            calcular('/')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+
+        function caso6() {
+            let resultadoEsperado = 'incalculável'
+            n1.value = 'a'
+            n2.value = 10
+            calcular('+')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+        function caso7() {
+            let resultadoEsperado = 'incalculável'
+            n1.value = 23
+            n2.value = 'i'
+            calcular('-')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+        function caso8() {
+            let resultadoEsperado = 'incalculável'
+            n1.value = 3
+            n2.value = 'corinthians'
+            calcular('*')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+        function caso9() {
+            let resultadoEsperado = 'incalculável'
+            n1.value = 892
+            n2.value = 'p'
+            calcular('/')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+        function caso10() {
+            let resultadoEsperado = 'incalculável'
+            n1.value = 'e'
+            n2.value = 'u'
+            calcular('+')
+            console.log(Number(resultadoHTML.value) == resultadoEsperado)
+        }
+
+        caso10()
+    </script>
+</body>
+</html>
